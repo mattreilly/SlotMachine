@@ -17,20 +17,28 @@ class ViewController: UIViewController {
     
     var titleLabel: UILabel!
     
-    // Information labels
+    // information labels
     var creditsLabel: UILabel!
     var betLabel: UILabel!
     var winnerPaidLabel: UILabel!
-
     var creditsTitleLabel: UILabel!
     var betTitleLabel: UILabel!
     var winnerPaidTitleLabel: UILabel!
+    
+    // buttons in fourth container
+    var resetButton: UIButton!
+    var betOneButton: UIButton!
+    var betMaxButton: UIButton!
+    var spinButton: UIButton!
     
     let kMarginForView:CGFloat = 10.0
     let kMarginForSlot:CGFloat = 2.0
 
     let kSixth:CGFloat = 1.0/6.0
     let kThird:CGFloat = 1.0/3.0
+    
+    let kHalf:CGFloat = 1.0/2.0
+    let kEighth:CGFloat = 1.0/8.0
     
     let kNumberOfContainers = 3
     let kNumberOfSlots = 3
@@ -43,11 +51,17 @@ class ViewController: UIViewController {
         setupFirstContainer(self.firstContainer)
         setupSecondContainer(self.secondContainer)
         setupThirdContainer(self.thirdContainer)
+        setupFourthContainer(self.fourthContainer)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    // IBActions
+    func resetButtonPressed(button: UIButton) {
+        println("resetButtonPressed")
     }
 
     func setupContainerViews() {
@@ -214,6 +228,26 @@ class ViewController: UIViewController {
                                                2 * kThird
                                            )
         containerView.addSubview(self.winnerPaidTitleLabel)
+    }
+    
+    func setupFourthContainer (containerView: UIView) {
+        self.resetButton = UIButton()
+        self.resetButton.setTitle("Reset", forState: UIControlState.Normal)
+        self.resetButton.setTitleColor(UIColor.blueColor(),
+                                       forState: UIControlState.Normal)
+        self.resetButton.titleLabel?.font = UIFont(name: "Superclarendon-Bold",
+                                                   size: 12)
+        self.resetButton.backgroundColor =  UIColor.blackColor()
+        self.resetButton.sizeToFit()
+        self.resetButton.center = CGPoint(
+                                          x: containerView.frame.width *
+                                             kEighth,
+                                          y: containerView.frame.height * kHalf
+                                         )
+        self.resetButton.addTarget(self, action: "resetButtonPressed:",
+            forControlEvents: UIControlEvents.TouchUpInside)
+        
+        containerView.addSubview(self.resetButton)
     }
 
 }
