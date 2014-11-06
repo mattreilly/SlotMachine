@@ -42,6 +42,7 @@ class ViewController: UIViewController {
         setupContainerViews()
         setupFirstContainer(self.firstContainer)
         setupSecondContainer(self.secondContainer)
+        setupThirdContainer(self.thirdContainer)
     }
 
     override func didReceiveMemoryWarning() {
@@ -173,6 +174,46 @@ class ViewController: UIViewController {
         self.winnerPaidLabel.textAlignment = NSTextAlignment.Center
         self.winnerPaidLabel.backgroundColor = UIColor.darkGrayColor()
         containerView.addSubview(self.winnerPaidLabel)
+
+        self.creditsTitleLabel = UILabel()
+        self.creditsTitleLabel.text = "Credits"
+        self.creditsTitleLabel.textColor = UIColor.blackColor()
+        self.creditsTitleLabel.font = UIFont(name: "AmericanTypewriter",
+                                             size: 14)
+        self.creditsTitleLabel.sizeToFit()
+        self.creditsTitleLabel.center = CGPoint(
+                                          x: containerView.frame.width * kSixth,
+                                          y: containerView.frame.height *
+                                             kThird * 2
+                                        )
+        containerView.addSubview(self.creditsTitleLabel)
+
+        self.betTitleLabel = UILabel()
+        self.betTitleLabel.text = "Bet"
+        self.betTitleLabel.textColor = UIColor.blackColor()
+        self.betTitleLabel.font = UIFont(name: "AmericanTypewriter", size: 14)
+        self.betTitleLabel.sizeToFit()
+        self.betTitleLabel.center = CGPoint(
+                                        x: containerView.frame.width *
+                                           kSixth * 3,
+                                        y: containerView.frame.height *
+                                           kThird * 2
+                                    )
+        containerView.addSubview(self.betTitleLabel)
+
+        self.winnerPaidTitleLabel = UILabel()
+        self.winnerPaidTitleLabel.text = "Winner Paid"
+        self.winnerPaidTitleLabel.textColor = UIColor.blackColor()
+        self.winnerPaidTitleLabel.font = UIFont(name: "AmericanTypewriter",
+                                                size: 14)
+        self.winnerPaidTitleLabel.sizeToFit()
+        self.winnerPaidTitleLabel.center = CGPoint(
+                                            x: containerView.frame.width *
+                                               5 * kSixth,
+                                            y: containerView.frame.height *
+                                               2 * kThird
+                                           )
+        containerView.addSubview(self.winnerPaidTitleLabel)
     }
 
 }
