@@ -63,6 +63,10 @@ class ViewController: UIViewController {
     func resetButtonPressed(button: UIButton) {
         println("resetButtonPressed")
     }
+    
+    func betOneButtonPressed(button: UIButton) {
+        println(button)
+    }
 
     func setupContainerViews() {
         self.firstContainer = UIView(frame: CGRect(
@@ -234,20 +238,32 @@ class ViewController: UIViewController {
         self.resetButton = UIButton()
         self.resetButton.setTitle("Reset", forState: UIControlState.Normal)
         self.resetButton.setTitleColor(UIColor.blueColor(),
-                                       forState: UIControlState.Normal)
+            forState: UIControlState.Normal)
         self.resetButton.titleLabel?.font = UIFont(name: "Superclarendon-Bold",
-                                                   size: 12)
+            size: 12)
         self.resetButton.backgroundColor =  UIColor.blackColor()
         self.resetButton.sizeToFit()
-        self.resetButton.center = CGPoint(
-                                          x: containerView.frame.width *
-                                             kEighth,
-                                          y: containerView.frame.height * kHalf
-                                         )
+        self.resetButton.center = CGPoint(x: containerView.frame.width *
+            kEighth, y: containerView.frame.height * kHalf)
         self.resetButton.addTarget(self, action: "resetButtonPressed:",
             forControlEvents: UIControlEvents.TouchUpInside)
         
         containerView.addSubview(self.resetButton)
+        
+        self.betOneButton = UIButton()
+        self.betOneButton.setTitle("Bet One", forState: UIControlState.Normal)
+        self.betOneButton.setTitleColor(UIColor.blueColor(),
+            forState: UIControlState.Normal)
+        self.betOneButton.titleLabel?.font = UIFont(name: "Superclarendon-Bold",
+            size: 12)
+        self.betOneButton.backgroundColor = UIColor.greenColor()
+        self.betOneButton.sizeToFit()
+        self.betOneButton.center = CGPoint(x: containerView.frame.width *
+            3 * kEighth, y: containerView.frame.height * kHalf)
+        self.betOneButton.addTarget(self, action: "betOneButtonPressed:",
+            forControlEvents: UIControlEvents.TouchUpInside)
+        containerView.addSubview(self.betOneButton)
+        
     }
 
 }
