@@ -31,6 +31,8 @@ class ViewController: UIViewController {
     var betMaxButton: UIButton!
     var spinButton: UIButton!
     
+    var slots:[[Slot]] = []
+    
     let kMarginForView:CGFloat = 10.0
     let kMarginForSlot:CGFloat = 2.0
 
@@ -73,7 +75,9 @@ class ViewController: UIViewController {
     }
     
     func spinButtonPressed(button: UIButton) {
-        println("spinButtonPressed")
+        self.removeSlotImageViews()
+        slots = Factory.createSlots()
+        setupSecondContainer(self.secondContainer)
     }
 
     func setupContainerViews() {
@@ -133,7 +137,18 @@ class ViewController: UIViewController {
             
             for var slotNumber = 0; slotNumber < kNumberOfSlots; ++slotNumber {
                 
+                var slot:Slot
                 var slotImageView = UIImageView()
+                
+                if slots.count != 0 {
+                    let slotContainer = slots[containerNumber]
+                    slot = slotContainer[slotNumber]
+                    slotImageView.image = slot.image
+                }
+                else {
+                    slotImageView.image = UIImage(named: "Ace")
+                }
+                
                 slotImageView.backgroundColor = UIColor.yellowColor()
 
                 slotImageView.frame =
@@ -293,6 +308,17 @@ class ViewController: UIViewController {
             forControlEvents: UIControlEvents.TouchUpInside)
         
         containerView.addSubview(self.spinButton)
+    }
+    
+    func removeSlotImageViews () {
+        if self.secondContainer != nil {
+            let container: UIView? = self.secondContainer
+            let subViews:Array? = container!.subviews
+            
+            for view in subViews! {
+                view.removeFromSuperview()
+            }
+        }
     }
 
 }
