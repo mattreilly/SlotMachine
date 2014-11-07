@@ -33,6 +33,11 @@ class ViewController: UIViewController {
     
     var slots:[[Slot]] = []
     
+    // stats
+    var credits = 0
+    var currentBet = 0
+    var winnings = 0
+    
     let kMarginForView:CGFloat = 10.0
     let kMarginForSlot:CGFloat = 2.0
 
@@ -51,9 +56,10 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         setupContainerViews()
         setupFirstContainer(self.firstContainer)
-        setupSecondContainer(self.secondContainer)
         setupThirdContainer(self.thirdContainer)
         setupFourthContainer(self.fourthContainer)
+        
+        hardReset()
     }
 
     override func didReceiveMemoryWarning() {
@@ -63,7 +69,7 @@ class ViewController: UIViewController {
     
     // IBActions
     func resetButtonPressed(button: UIButton) {
-        println("resetButtonPressed")
+        hardReset()
     }
     
     func betOneButtonPressed(button: UIButton) {
@@ -319,6 +325,23 @@ class ViewController: UIViewController {
                 view.removeFromSuperview()
             }
         }
+    }
+    
+    func hardReset() {
+        removeSlotImageViews()
+        slots.removeAll(keepCapacity: true)
+        self.setupSecondContainer(self.secondContainer)
+        credits = 50
+        winnings = 0
+        currentBet = 0
+        
+        updateMainView()
+    }
+    
+    func updateMainView() {
+        self.creditsLabel.text = "/(credits)"
+        self.betLabel.text = "/(currentBet)"
+        self.winnerPaidLabel.text = "/(winnings)"
     }
 
 }
