@@ -90,7 +90,21 @@ class ViewController: UIViewController {
     }
     
     func betMaxButtonPressed(button: UIButton) {
-        println("betMaxButtonPressed")
+        if credits <= 5 {
+            showAlertWithText(header: "Not Enough Credits", message:
+                "Make a Smaller Bet!")
+        }
+        else {
+            if currentBet < 5 {
+                var creditsToBetMax = 5 - currentBet
+                currentBet += creditsToBetMax
+                updateMainView()
+            }
+            else {
+                showAlertWithText(message:
+                    "You can only bet 5 credits at a time.")
+            }
+        }
     }
     
     func spinButtonPressed(button: UIButton) {
