@@ -53,11 +53,22 @@ class SlotBrain {
                 winnings += 1
                 flushWinCount += 1
             }
+            
+            if checkThreeInARow(slotRow) == true {
+                println("Straight")
+                winnings += 1
+                straightWinCount += 1
+            }
         }
         
         if flushWinCount == 3 {
             println("Royal Flush!")
             winnings += 15
+        }
+        
+        if straightWinCount == 3 {
+            println("Crazy Straight!")
+            winnings += 1000
         }
         
         return winnings
