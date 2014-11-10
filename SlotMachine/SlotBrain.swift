@@ -81,7 +81,23 @@ class SlotBrain {
         }
     }
     
-    
+    class func checkThreeInARow (slotRow: [Slot]) -> Bool {
+        
+        let slot1 = slotRow[0]
+        let slot2 = slotRow[1]
+        let slot3 = slotRow[2]
+        
+        if slot1.value == slot2.value - 1 && slot1.value == slot3.value - 2 {
+            return true
+        }
+        else if slot1.value == slot2.value + 1 && slot1.value ==
+            slot3.value + 2 {
+            return true
+        }
+        else {
+            return false
+        }
+    }
     
     
     
